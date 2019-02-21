@@ -7,24 +7,45 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = ({
-      country: '',
-      capital: '',
-      region: '',
-      subregion: ''
+      data: [],
+      country: [],
+      capital: [],
+      region: [],
+      subregion: []
     })
   }
 
   async componentDidMount() {
     const request = await axios.get('https://restcountries.eu/rest/v2/all')
     const response = request.data 
-    console.log(response)
+    const list = [];
+    for(let i = 0; i< response.length; i++) {
+      let data = [];
+      data.country = response[i].name
+      data.capital = response[i].capital
+      data.region = response[i].region
+      data.subregion = response[i].subregion 
+      list[i] = data
+    }
+    this.setState({
+      data:  list,
+      capital:  response.data,
+      region:  response.data,
+      subregion: response.data,
+    })
   }
 
   render() {
     return (
       <div className="App">
         <h1>Country/Capital Data Multi-Search Service</h1>
-        <Search />
+        <Search 
+          data={this.state.data}
+          country ={this.state.country}
+          capital ={this.state.capital}
+          region ={this.state.region}
+          subregion ={this.state.subregion}
+        />
       </div>
     );
   }
