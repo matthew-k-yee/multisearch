@@ -16,6 +16,10 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    await this.getCountries()
+  }
+
+  async getCountries() {
     const request = await axios.get('https://restcountries.eu/rest/v2/all')
     const response = request.data 
     const list = [];

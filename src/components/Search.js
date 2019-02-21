@@ -3,7 +3,9 @@ import React from 'react'
 class Search extends React.Component {
   constructor(props){
     super(props)
-    this.state = ({})
+    this.state = ({
+      
+    })
   }
 
   render() {
@@ -34,6 +36,7 @@ class Search extends React.Component {
           placeholder='Filter by subregion' 
           onChange={this.handleChange}  
           />
+       <p>hi</p>
       </div>
     )
   }
