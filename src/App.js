@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from './components/Search'
+import Table from './components/Table'
 import './App.css';
 import axios from 'axios';
 
@@ -7,11 +8,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = ({
-      data: '',
-      country: [],
-      capital: [],
-      region: [],
-      subregion: []
+      data: [],
     })
   }
 
@@ -22,40 +19,31 @@ class App extends Component {
   async getCountries() {
     const request = await axios.get('https://restcountries.eu/rest/v2/all')
     const response = request.data 
-    const list = [];
+    const array = [];
     for(let i = 0; i< response.length; i++) {
-      let data = {};
-      data.country = response[i].name
-      data.capital = response[i].capital
-      data.region = response[i].region
-      data.subregion = response[i].subregion 
-      list[i] = data
+      let list = {};
+      list.country = response[i].name
+      list.capital = response[i].capital
+      list.region = response[i].region
+      list.subregion = response[i].subregion 
+      array[i] = list
     }
     this.setState({
-      data:  list,
-      capital:  response.data,
-      region:  response.data,
-      subregion: response.data,
+      data: array,
     })
   }
 
   handleChange = e => {
 
   }
+  
 
   render() {
-    console.log(this.state.data)
     return (
       <div className="App">
         <h1>Country/Capital Data Multi-Search Service</h1>
-        <Search 
-          data={this.state.data}
-          // country ={this.state.country}
-          // capital ={this.state.capital}
-          // region ={this.state.region}
-          // subregion ={this.state.subregion}
-          handleChange={this.handleChange}
-        />
+        <Search handleChange={this.handleChange} />
+        <Table data={this.state.data}/>
       </div>
     );
   }
