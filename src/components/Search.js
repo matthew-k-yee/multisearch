@@ -1,4 +1,5 @@
 import React from 'react' 
+import Table from './Table'
 
 const Search = props => {
   return (
@@ -27,6 +28,7 @@ const Search = props => {
           placeholder='Filter by subregion' 
           onChange={props.handleChange}  
           />
+          <Table data={props.data}/>
     </div>
   )
 }

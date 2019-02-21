@@ -9,6 +9,11 @@ class App extends Component {
     super(props)
     this.state = ({
       data: [],
+      countrySearch: [],
+      capitalSearch: [],
+      regionSearch: [],
+      subregionSearch: [],
+      filter: []
     })
   }
 
@@ -34,7 +39,22 @@ class App extends Component {
   }
 
   handleChange = e => {
-
+    let currentList = [];
+    let newList = [];
+    if (e.target.value !== '') {
+      currentList = this.state.data;
+      newList.filter(item => {
+        const lc = currentList.toLowerCase()
+        const filter = e.target.value.toLowerCase()
+        return lc.includes.filter
+      })
+    } else {
+      newList = this.state.data
+    } 
+    this.setState({
+      filter: newList
+    })
+    console.log(e.target.value)
   }
   
 
@@ -42,8 +62,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Country/Capital Data Multi-Search Service</h1>
-        <Search handleChange={this.handleChange} />
-        <Table data={this.state.data}/>
+        <Search 
+          handleChange={this.handleChange} 
+          data={this.state.data } 
+          />
       </div>
     );
   }

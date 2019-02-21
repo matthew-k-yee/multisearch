@@ -4,11 +4,11 @@ const Table = props => {
   const data = props.data
   const list = data.map((country, index) => {
     return (
-      <tr>
-        <td>{country.country}</td>
-        <td>{country.capital}</td>
-        <td>{country.region}</td>
-        <td>{country.subregion}</td>
+      <tr key={index}>
+        <td className='country'>{country.country}</td>
+        <td className='capital'>{country.capital}</td>
+        <td className='region'>{country.region}</td>
+        <td className='subregion'>{country.subregion}</td>
       </tr>
     )
   })
