@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = ({
-      data: [],
+      data: '',
       country: [],
       capital: [],
       region: [],
@@ -24,7 +24,7 @@ class App extends Component {
     const response = request.data 
     const list = [];
     for(let i = 0; i< response.length; i++) {
-      let data = [];
+      let data = {};
       data.country = response[i].name
       data.capital = response[i].capital
       data.region = response[i].region
@@ -39,16 +39,22 @@ class App extends Component {
     })
   }
 
+  handleChange = e => {
+
+  }
+
   render() {
+    console.log(this.state.data)
     return (
       <div className="App">
         <h1>Country/Capital Data Multi-Search Service</h1>
         <Search 
           data={this.state.data}
-          country ={this.state.country}
-          capital ={this.state.capital}
-          region ={this.state.region}
-          subregion ={this.state.subregion}
+          // country ={this.state.country}
+          // capital ={this.state.capital}
+          // region ={this.state.region}
+          // subregion ={this.state.subregion}
+          handleChange={this.handleChange}
         />
       </div>
     );
