@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Search from './components/Search'
 import './App.css';
 import axios from 'axios';
 
@@ -23,6 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Country/Capital Data Multi-Search Service</h1>
+        <Search />
       </div>
     );
   }
