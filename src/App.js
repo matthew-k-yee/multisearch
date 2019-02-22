@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Search from './components/Search'
-import Table from './components/Table'
 import './App.css';
 import axios from 'axios';
 
@@ -8,12 +7,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = ({
-      data: [],
-      countrySearch: [],
-      capitalSearch: [],
-      regionSearch: [],
-      subregionSearch: [],
-      filter: []
+      data: []
     })
   }
 
@@ -38,34 +32,11 @@ class App extends Component {
     })
   }
 
-  handleChange = e => {
-    let currentList = [];
-    let newList = [];
-    if (e.target.value !== '') {
-      currentList = this.state.data;
-      newList.filter(item => {
-        const lc = currentList.toLowerCase()
-        const filter = e.target.value.toLowerCase()
-        return lc.includes.filter
-      })
-    } else {
-      newList = this.state.data
-    } 
-    this.setState({
-      filter: newList
-    })
-    console.log(e.target.value)
-  }
-  
-
   render() {
     return (
       <div className="App">
         <h1>Country/Capital Data Multi-Search Service</h1>
-        <Search 
-          handleChange={this.handleChange} 
-          data={this.state.data } 
-          />
+        <Search data={this.state.data } />
       </div>
     );
   }
