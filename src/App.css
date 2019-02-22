@@ -41,7 +41,9 @@ th {
   color: #ff7473;
   border-bottom: 1px solid #ffc952;
   font-size: 18px;
+  padding-left: 90px;
 }
+
 td {
   color: #47b8e0;
 }
